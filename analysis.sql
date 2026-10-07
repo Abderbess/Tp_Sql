@@ -1,12 +1,12 @@
 -- =====================================================================
--- analysis.sql — Analyse e-commerce (PostgreSQL)
+-- analysis.sql - Analyse e-commerce (PostgreSQL)
 
 -- =====================================================================
 SET client_encoding TO 'UTF8';
 
 
 -- =====================================================================
--- Exercice 1 — Explorer les produits
+-- Exercice 1 - Explorer les produits
 -- =====================================================================
 
 -- Liste de tous les produits
@@ -26,7 +26,7 @@ ORDER BY prix DESC;
 
 
 -- =====================================================================
--- Exercice 2 — Explorer les clients
+-- Exercice 2 - Explorer les clients
 -- =====================================================================
 
 -- Clients habitant dans une ville donnée
@@ -45,7 +45,7 @@ ORDER BY nb_clients DESC, ville;
 
 
 -- =====================================================================
--- Exercice 3 — Explorer les commandes
+-- Exercice 3 - Explorer les commandes
 -- =====================================================================
 -- La jointure se fait sur la clé étrangère commande.client_id.
 SELECT co.id AS id_commande,
@@ -64,7 +64,7 @@ ORDER BY co.date_commande, co.id;
 
 
 -- =====================================================================
--- Exercice 4 — Montant de chaque ligne
+-- Exercice 4 - Montant de chaque ligne
 -- =====================================================================
 SELECT lc.id AS id_ligne,
        lc.commande_id,
@@ -79,7 +79,7 @@ ORDER BY lc.commande_id, lc.id;
 
 
 -- =====================================================================
--- Exercice 5 — Montant total de chaque commande
+-- Exercice 5 - Montant total de chaque commande
 -- =====================================================================
 SELECT co.id AS id_commande,
        co.date_commande,
@@ -93,7 +93,7 @@ ORDER BY co.id;
 
 
 -- =====================================================================
--- Exercice 6 — Chiffre d'affaires par catégorie (hors annulées)
+-- Exercice 6 - Chiffre d'affaires par catégorie (hors annulées)
 -- =====================================================================
 SELECT p.categorie,
        SUM(lc.quantite * lc.prix_unitaire) AS chiffre_affaires,
@@ -117,7 +117,7 @@ ORDER BY chiffre_affaires DESC;
 
 
 -- =====================================================================
--- Exercice 7 — Top 10 des produits les plus vendus (en quantité)
+-- Exercice 7 - Top 10 des produits les plus vendus (en quantité)
 -- =====================================================================
 SELECT p.nom AS produit,
        p.categorie,
@@ -137,7 +137,7 @@ LIMIT 10;
 
 
 -- =====================================================================
--- Exercice 8 — Produits générant le plus de chiffre d'affaires
+-- Exercice 8 - Produits générant le plus de chiffre d'affaires
 -- =====================================================================
 SELECT p.nom AS produit,
        p.categorie,
@@ -156,7 +156,7 @@ ORDER BY chiffre_affaires DESC, p.nom;
 
 
 -- =====================================================================
--- Exercice 9 — Clients
+-- Exercice 9 - Clients
 -- =====================================================================
 SELECT cl.id AS id_client,
        cl.nom,
@@ -186,7 +186,7 @@ ORDER BY cl.id;
 
 
 -- =====================================================================
--- Exercice 10 — Panier moyen
+-- Exercice 10 - Panier moyen
 -- Panier moyen = chiffre d'affaires / nombre de commandes (hors annulées)
 -- =====================================================================
 
@@ -228,7 +228,7 @@ ORDER BY mois;
 
 
 -- =====================================================================
--- Exercice 11 — Catégoriser les commandes selon leur montant
+-- Exercice 11 - Catégoriser les commandes selon leur montant
 -- =====================================================================
 -- Toutes les commandes sont classées (y compris les annulées), avec leur
 -- statut. Les annulées sont exclues seulement du calcul du CA plus bas.
@@ -284,7 +284,7 @@ ORDER BY MIN(montant_total);
 
 
 -- =====================================================================
--- Exercice 12 — Analyse temporelle
+-- Exercice 12 - Analyse temporelle
 -- =====================================================================
 
 -- CA par mois, rang et évolution par rapport au mois précédent
@@ -330,7 +330,7 @@ ORDER BY 1, 2;
 
 
 -- =====================================================================
--- Exercice 13 — Commandes antérieures à l'inscription du client
+-- Exercice 13 - Commandes antérieures à l'inscription du client
 -- =====================================================================
 SELECT co.id AS id_commande,
        cl.id AS id_client,
@@ -358,7 +358,7 @@ WHERE co.date_commande < cl.date_inscription;
 
 
 -- =====================================================================
--- Exercice 14 — Produits jamais vendus
+-- Exercice 14 - Produits jamais vendus
 -- =====================================================================
 SELECT p.nom AS produit, p.categorie, p.prix, p.stock
 FROM produit p
@@ -381,7 +381,7 @@ ORDER BY p.categorie, p.nom;
 
 
 -- =====================================================================
--- Exercice 15 — Tableau de bord
+-- Exercice 15 - Tableau de bord
 -- =====================================================================
 
 -- ---------- A. Exploration ----------
@@ -501,7 +501,7 @@ SELECT * FROM synthese_mensuelle ORDER BY mois;
 
 -- =====================================================================
 -- =====================================================================
--- PARTIE 7 — ANALYSE LIBRE
+-- PARTIE 7 - ANALYSE LIBRE
 -- Pour chaque analyse : question, données, requête, résultat,
 -- observation, intérêt pour l'entreprise.
 -- =====================================================================
@@ -509,7 +509,7 @@ SELECT * FROM synthese_mensuelle ORDER BY mois;
 
 
 -- =====================================================================
--- Analyse libre 1 — Écart entre prix payé et prix actuel du catalogue
+-- Analyse libre 1 - Écart entre prix payé et prix actuel du catalogue
 -- ---------------------------------------------------------------------
 -- Question : Les clients ont-ils payé moins cher (ou plus cher) que le
 --            prix affiché aujourd'hui ? Dans quelles catégories ?
@@ -575,7 +575,7 @@ ORDER BY 1;
 
 
 -- =====================================================================
--- Analyse libre 2 — Le CA dépend-il de quelques gros clients ? (Pareto)
+-- Analyse libre 2 - Le CA dépend-il de quelques gros clients ? (Pareto)
 -- ---------------------------------------------------------------------
 -- Question : Quelle part du CA est réalisée par les 20 % des clients
 --            actifs qui dépensent le plus ?
@@ -632,7 +632,7 @@ ORDER BY groupe;
 
 
 -- =====================================================================
--- Analyse libre 3 — Les clients reviennent-ils ?
+-- Analyse libre 3 - Les clients reviennent-ils ?
 -- ---------------------------------------------------------------------
 -- Question : Les clients actifs rachètent-ils, et à quel rythme ?
 -- Données  : commande.client_id, commande.date_commande, commande.statut.
@@ -704,7 +704,7 @@ FROM achats;
 
 
 -- =====================================================================
--- Analyse libre 4 — Quel jour de la semaine vend-on le plus ?
+-- Analyse libre 4 - Quel jour de la semaine vend-on le plus ?
 -- ---------------------------------------------------------------------
 -- Question : Les clients achètent-ils plus en semaine ou le week-end ?
 -- Données  : commande.date_commande, montants des lignes, hors annulées.
@@ -742,7 +742,7 @@ ORDER BY 1;
 
 
 -- =====================================================================
--- Analyse libre 5 — Risque de rupture de stock
+-- Analyse libre 5 - Risque de rupture de stock
 -- ---------------------------------------------------------------------
 -- Question : Pour chaque produit vendu, combien de mois le stock actuel
 --            peut-il tenir au rythme de vente observé ?
@@ -799,7 +799,7 @@ ORDER BY mois_de_stock, produit;
 
 
 -- =====================================================================
--- Analyse libre 6 — Quelles catégories sont le plus annulées ?
+-- Analyse libre 6 - Quelles catégories sont le plus annulées ?
 -- ---------------------------------------------------------------------
 -- Question : Les annulations touchent-elles certaines catégories plus
 --            que d'autres, et quel montant représentent-elles ?
