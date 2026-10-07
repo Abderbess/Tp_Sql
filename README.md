@@ -1,4 +1,4 @@
-# Projet — Analyse des données d'une plateforme e-commerce
+# Projet - Analyse des données d'une plateforme e-commerce
 Groupe 4
 
 Analyse en SQL (PostgreSQL) de l'activité d'une plateforme e-commerce sur l'année 2025 : produits, clients, commandes, chiffre d'affaires, qualité des données et indicateurs clés.
