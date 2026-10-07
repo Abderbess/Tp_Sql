@@ -1,0 +1,24 @@
+# Systèmes d'exploitation
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Fichiers temporaires et logs
+*.log
+*.tmp
+
+# Sauvegardes et exports de base de données
+*.backup
+*.dump
+*.bak
+exports/
+
+# Identifiants (ne jamais les pousser sur GitHub)
+.env
+.pgpass
